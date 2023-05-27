@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-api-test-deployment-openshift
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-api-test
+  template:
+    metadata:
+      labels:
+        app: my-api-test
+    spec:
+      containers:
+      - name: my-api-test
+        image: localhost/node-simple-api-image
+        ports:
+          - containerPort: 8080
+            protocol: TCP
